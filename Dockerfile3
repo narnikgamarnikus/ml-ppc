@@ -1,0 +1,53 @@
+FROM ubuntu:latest 
+
+
+MAINTAINER Narnik Gamarnik <narnikgamarnikus@gmail.com>
+
+ADD ayur_all_users.csv \
+	ga_ayur.py \
+	xgboost_cpc.py /
+
+RUN apt-get update \
+	&& apt-get install -y python3-pip python3-dev \
+ 	libcurl4-gnutls-dev libexpat1-dev gettext \
+  	libz-dev libssl-dev git curl wget python3-tk \
+  	&& cd /usr/local/bin \
+  	&& ln -s /usr/bin/python3 python \
+  	&& pip3 install --upgrade pip
+
+RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \ 
+	wget --quiet https://repo.continuum.io/miniconda/Miniconda2-4.3.14-Linux-x86_64.sh -O ~/miniconda.sh && \ 
+	/bin/bash ~/miniconda.sh -b -p /opt/conda && \ 
+	rm ~/miniconda.sh
+
+RUN apt-get install -y curl grep sed dpkg && \ 
+	TINI_VERSION=`curl https://github.com/krallin/tini/releases/latest | grep -o "/v.*\"" | sed 's:^..\(.*\).$:\1:'` && \ 
+	curl -L "https://github.com/krallin/tini/releases/download/v${TINI_VERSION}/tini_${TINI_VERSION}.deb" > tini.deb && \ 
+	dpkg -i tini.deb && \ 
+	rm tini.deb && \ 
+	apt-get clean
+
+RUN conda install --quiet --yes \
+	'numpy‑1.13.1+mkl‑cp34‑cp34m‑win_amd64.whl' \
+	'pandas==0.19.2' \
+	'matplotlib==2.0.2' \
+	'seaborn==0.7.1' \
+	'graphviz==0.5.2' \
+	'scikit-learn==0.18.2' 
+
+RUN pip3 install --no-cache-dir \
+	'sanic' \
+
+RUN ln -s $CONDA_DIR/envs/python2/bin/pip $CONDA_DIR/bin/pip2 && \
+	ln -s $CONDA_DIR/bin/pip $CONDA_DIR/bin/pip3
+
+RUN git clone --recursive https://github.com/dmlc/xgboost && \
+    cd xgboost && \
+    make -j4 && \
+	cd python-package; python3 setup.py install
+
+ENV PATH /opt/conda/bin:$PATH 
+
+ENTRYPOINT [ "/usr/bin/tini", "--" ]
+
+CMD [ "python3", "./xgboost_cpc.py" ]
