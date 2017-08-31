@@ -18,13 +18,13 @@ app.static('/forsolving.com', './forsolving.com')
 
 
 @app.route("/")
-@app.route("/index")
+@app.route("/index.html")
 def index(request):
     response = file(join(dirname(__file__),'forsolving.com/index.html'))
     return response
 
 
-@app.route("/mail", methods=['POST'])
+@app.route("/mail.html", methods=['POST'])
 def mail(request):
     email = request.body.decode()
     print(email)
@@ -38,13 +38,13 @@ def mail(request):
     return text('Спасибо. В ближайшее время мы свяжемся с Вами')
 
 
-@app.route("/team")
+@app.route("/team.html")
 def team(request):
     response = file(join(dirname(__file__),'forsolving.com/team.html'))
     return response
 
 
-@app.route("/contacts")
+@app.route("/contacts.html")
 def contacts(request):
     response = file(join(dirname(__file__),'forsolving.com/contacts.html'))
     return response
@@ -94,7 +94,7 @@ class SimpleView(HTTPMethodView):
         os.remove('data.csv')
         return response.json(j.dumps(data))
 
-app.add_route(SimpleView.as_view(), '/test')
+app.add_route(SimpleView.as_view(), '/test.html')
 
 if __name__ == "__main__":
     app.run(
