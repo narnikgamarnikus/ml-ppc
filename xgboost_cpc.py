@@ -14,7 +14,9 @@ from sklearn import preprocessing
 
 # rcParams['figure.figsize'] = 10, 5
 
-matplotlib.use('Agg')
+#matplotlib.use('Agg')
+matplotlib.use("TkAgg")
+
 
 train = pd.read_csv('ayur_all_users.csv', header=0, encoding='latin1')
 train.drop(['id', 'Unnamed: 0', 'index', 'conv_rate'], axis=1, inplace=True)
