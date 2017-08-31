@@ -8,7 +8,7 @@ from sklearn.model_selection import GridSearchCV  # Perforing grid search
 from sklearn.model_selection import train_test_split
 
 import matplotlib
-mpl.use('Agg')
+matplotlib.use('Agg')
 import matplotlib.pylab as plt
 from matplotlib.pylab import rcParams
 from sklearn import preprocessing
