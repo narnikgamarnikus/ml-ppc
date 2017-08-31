@@ -44,6 +44,12 @@ def team(request):
     return response
 
 
+@app.route("/tools.html")
+def team(request):
+    response = file(join(dirname(__file__),'forsolving.com/tools.html'))
+    return response
+
+
 @app.route("/contacts.html")
 def contacts(request):
     response = file(join(dirname(__file__),'forsolving.com/contacts.html'))
@@ -51,7 +57,7 @@ def contacts(request):
 
 class SimpleView(HTTPMethodView):
     def get(self, request):
-        response = file(join(dirname(__file__),'forsolving.com/test.html'))
+        response = file(join(dirname(__file__),'forsolving.com/ppc.html'))
         return response
 
     def post(self, request):
@@ -94,7 +100,7 @@ class SimpleView(HTTPMethodView):
         os.remove('data.csv')
         return response.json(j.dumps(data))
 
-app.add_route(SimpleView.as_view(), '/test.html')
+app.add_route(SimpleView.as_view(), '/ppc.html')
 
 if __name__ == "__main__":
     app.run(

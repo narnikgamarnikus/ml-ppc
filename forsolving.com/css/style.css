@@ -28,7 +28,7 @@
 }
 
 .circled-image-111 {
-    background-image: url(../../forsolving.com/img/circled2.png);
+    background-image: url(../img/circled2.png);
 }
 
 p {
@@ -41,7 +41,7 @@ p {
 }
 .site-section.image {
     padding: 40px 0 60px 0;
-    background: #1a1e23 url(../../forsolving.com/img/testimonialsBG.png) no-repeat;
+    background: #1a1e23 url(../img/testimonialsBG.png) no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
