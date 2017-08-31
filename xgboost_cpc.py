@@ -7,11 +7,14 @@ from sklearn import model_selection, metrics  # Additional scklearn functions
 from sklearn.model_selection import GridSearchCV  # Perforing grid search
 from sklearn.model_selection import train_test_split
 
+import matplotlib
 import matplotlib.pylab as plt
 from matplotlib.pylab import rcParams
 from sklearn import preprocessing
 
 # rcParams['figure.figsize'] = 10, 5
+
+matplotlib.use('Agg')
 
 train = pd.read_csv('ayur_all_users.csv', header=0, encoding='latin1')
 train.drop(['id', 'Unnamed: 0', 'index', 'conv_rate'], axis=1, inplace=True)
