@@ -12,9 +12,14 @@ import matplotlib.pylab as plt
 from matplotlib.pylab import rcParams
 from sklearn import preprocessing
 
+
+import matplotlib
+matplotlib.use("TkAgg")
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
+from matplotlib.figure import Figure
+
 # rcParams['figure.figsize'] = 10, 5
 
-matplotlib.use('Agg')
 
 
 train = pd.read_csv('ayur_all_users.csv', header=0, encoding='latin1')
