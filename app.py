@@ -14,13 +14,13 @@ from xgboost.sklearn import XGBClassifier
 
 
 app = Sanic()
-app.static('/', './')
+app.static('/forsolving.com', './forsolving.com')
 
 
 @app.route("/")
 @app.route("/index")
 def index(request):
-    response = file(join(dirname(__file__),'/index.html'))
+    response = file(join(dirname(__file__),'forsolving.com/index.html'))
     return response
 
 
@@ -40,18 +40,18 @@ def mail(request):
 
 @app.route("/team")
 def team(request):
-    response = file(join(dirname(__file__),'team.html'))
+    response = file(join(dirname(__file__),'forsolving.com/team.html'))
     return response
 
 
 @app.route("/contacts")
 def contacts(request):
-    response = file(join(dirname(__file__),'/contacts.html'))
+    response = file(join(dirname(__file__),'forsolving.com/contacts.html'))
     return response
 
 class SimpleView(HTTPMethodView):
     def get(self, request):
-        response = file(join(dirname(__file__),'/test.html'))
+        response = file(join(dirname(__file__),'forsolving.com/test.html'))
         return response
 
     def post(self, request):
