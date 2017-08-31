@@ -8,15 +8,12 @@ from sklearn.model_selection import GridSearchCV  # Perforing grid search
 from sklearn.model_selection import train_test_split
 
 import matplotlib
+mpl.use('Agg')
 import matplotlib.pylab as plt
 from matplotlib.pylab import rcParams
 from sklearn import preprocessing
 
 
-import matplotlib
-matplotlib.use("TkAgg")
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2TkAgg
-from matplotlib.figure import Figure
 
 # rcParams['figure.figsize'] = 10, 5
 
