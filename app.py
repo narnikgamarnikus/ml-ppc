@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 from sanic import Sanic
 from sanic import response
 from sanic.response import json, file, text
