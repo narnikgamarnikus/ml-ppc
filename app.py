@@ -65,7 +65,7 @@ class SimpleView(HTTPMethodView):
     def post(self, request):
 
         file = open('data.csv', 'w')
-        file.write((request.body).decode())
+        file.write((request.body)#.decode())
         file.close()
         
         train = pd.read_csv('data.csv', header=0, encoding='latin1')
