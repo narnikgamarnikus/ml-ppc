@@ -19,7 +19,7 @@ from sklearn import preprocessing
 
 
 
-train = pd.read_csv('ayur_all_users.csv', header=0, encoding='latin1')
+train = pd.read_csv('/usr/ml-ppc/ayur_all_users.csv', header=0, encoding='latin1')
 train.drop(['id', 'Unnamed: 0', 'index', 'conv_rate'], axis=1, inplace=True)
 train['bounce_rate'] = train['bounce_rate'].astype(float)
 # train['conv_rate'] = train['conv_rate'].astype(float)
