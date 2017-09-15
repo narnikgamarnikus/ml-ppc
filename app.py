@@ -28,7 +28,7 @@ def index(request):
 
 @app.route("/mail.html", methods=['POST'])
 def mail(request):
-    email = request.body.decode()
+    email = request.body#.decode()
     print(email)
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
@@ -65,7 +65,7 @@ class SimpleView(HTTPMethodView):
     def post(self, request):
 
         file = open('data.csv', 'w')
-        file.write((request.body)#.decode())
+        file.write(request.body)#.decode())
         file.close()
         
         train = pd.read_csv('data.csv', header=0, encoding='latin1')
