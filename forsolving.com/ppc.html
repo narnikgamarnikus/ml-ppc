@@ -48,7 +48,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  jQuery.ajax({
  url: url,
  type: "POST",
- async: true,
+ async: false,
  data: jQuery('#fileselect')[0].files[0],
  beforeSend: function () { $("#loading").removeClass('hide'); },
  complete: function () { $("#loading").addClass('hide'); },
@@ -58,12 +58,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  contentType: false,
  //enctype: 'multipart/form-data',
  success: function(response) {
- document.getElementById(result_id).innerHTML = 'Accuracy: ' + JSON.parse(response).test + '<br/> AUC Score (Train): ' + JSON.parse(response).train + '<br/> AUC Score (Test): ' + JSON.parse(response).accuracy;
+ //document.getElementById(result_id).innerHTML = 'Accuracy: ' + JSON.parse(response).test + '<br/> AUC Score (Train): ' + JSON.parse(response).train + '<br/> AUC Score (Test): ' + JSON.parse(response).accuracy;
  document.getElementById("result").classList.remove("hide");
  document.getElementById("result").src = "forsolving.com/result.png";
  },
  error: function(response) {
- document.getElementById(result_id).innerHTML = "<p>Возникла ошибка при отправке формы. Попробуйте еще раз</p>";
+ document.getElementById(result_id).innerHTML = "<p style='color:#777777'>Возникла ошибка при отправке формы. Попробуйте еще раз</p>";
  }
  });
 
