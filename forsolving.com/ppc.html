@@ -73,7 +73,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  .removeAttr('checked')
  .removeAttr('selected');
  }
-
+	var typed = new Typed('#loading', {
+	  strings: ["Loading", "Loading.", "Loading..", "Loading..."],
+	  typeSpeed: 30
+	});
 </script>
 	<div id="header-wrap">
 		<div class="logo"><a href="forsolving.com/index"><img src="forsolving.com/img/f.png" alt=""></a></div>		
@@ -105,7 +108,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 							<input class="large-btn-side" id="button" type="button" value="send" onclick="AjaxFormRequest('messegeResult', 'formMain', 'ppc.html')"/></div>
 							<div class="catch-errors"></div>
 						</form>
-						<img id="loading" src="forsolving.com/img/3.gif" class="hide">
+						<div id="loading" class="hide">Loading... Please wait.</div>
 						<img id="result" src="" class="hide">
 					</div>
 				</div>				
