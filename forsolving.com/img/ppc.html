@@ -58,12 +58,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  contentType: false,
  //enctype: 'multipart/form-data',
  success: function(response) {
- //document.getElementById(result_id).innerHTML = 'Accuracy: ' + JSON.parse(response).test + '<br/> AUC Score (Train): ' + JSON.parse(response).train + '<br/> AUC Score (Test): ' + JSON.parse(response).accuracy;
+ document.getElementById(result_id).innerHTML = 'Accuracy: ' + JSON.parse(response).test + '<br/> AUC Score (Train): ' + JSON.parse(response).train + '<br/> AUC Score (Test): ' + JSON.parse(response).accuracy;
  document.getElementById("result").classList.remove("hide");
  document.getElementById("result").src = "forsolving.com/result.png";
  },
  error: function(response) {
- document.getElementById(result_id).innerHTML = "<p style='color:#777777'>Sorry, data you sent is wrong format. Try again</p>";
+ document.getElementById(result_id).innerHTML = "<p>Возникла ошибка при отправке формы. Попробуйте еще раз</p>";
  }
  });
 
@@ -73,6 +73,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  .removeAttr('checked')
  .removeAttr('selected');
  }
+
 </script>
 	<div id="header-wrap">
 		<div class="logo"><a href="http://forsolving.com/index"><img src="forsolving.com/img/f.png" alt=""></a></div>		
@@ -109,8 +110,7 @@ You can try it yourself by uploading csv report from Google Analytics containing
 							<input class="large-btn-side" id="button" type="button" value="send" onclick="AjaxFormRequest('messegeResult', 'formMain', 'ppc.html')"/></div>
 							<div class="catch-errors"></div>
 						</form>
-						<!--div id="loading" class="hide">Processing data... Please wait.</div-->
-						<img id="loading" class="hide" src="forsolving.com/img/3.gif">
+						<img id="loading" src="forsolving.com/img/3.gif" class="hide">
 						<img id="result" src="" class="hide">
 					</div>
 				</div>				
